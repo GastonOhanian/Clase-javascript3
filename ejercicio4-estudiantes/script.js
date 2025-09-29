@@ -16,44 +16,40 @@
  * - Método estático para validar email
  */
 class Person {
-    // TODO: Implementar la clase Person
-    
-    // Pistas para implementar:
-    
-    // 1. Constructor:
-    // constructor(name, email, age = 18, phone = '') {
-    //     this.id = Person.generateId();
-    //     this.name = name;
-    //     this.email = email; // Usa el setter para validar
-    //     this.age = age;
-    //     this.phone = phone;
-    //     this.createdAt = new Date();
-    // }
+
+    constructor(name, email, age = 18, phone = '') {
+   this.id = Person.generateId();
+   this.name = name;
+   this.email = email; 
+   this.age = age;
+   this.phone = phone;
+   this.createdAt = new Date();
+    }
     
     // 2. Getter y setter para email:
-    // get email() { return this._email; }
-    // set email(value) {
-    //     if (!Person.isValidEmail(value)) {
-    //         throw new Error('Email inválido');
-    //     }
-    //     this._email = value;
-    // }
+    get email() { return this._email; }
+    set email(value) {
+        if (!Person.isValidEmail(value)) {
+        throw new Error('Email inválido');
+    }
+        this._email = value;
+    }
     
     // 3. Método estático para validar email:
-    // static isValidEmail(email) {
-    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //     return regex.test(email);
-    // }
+    static isValidEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+    }
     
-    // 4. Método toString():
-    // toString() {
-    //     return `${this.name} (${this.email})`;
-    // }
+    //4. Método toString():
+    toString() {
+         return `${this.name} (${this.email})`;
+    }
     
     // 5. Generar ID único:
-    // static generateId() {
-    //     return '_' + Math.random().toString(36).substr(2, 9);
-    // }
+    static generateId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+    }
 }
 
 /**
@@ -72,9 +68,19 @@ class Student extends Person {
     
     // Pistas para implementar:
     
-    // 1. Constructor
-    
+constructor(name, email, age = 18, phone = ''){
+ super(name, email, age, phone);
+ this.enrolledCourses=[];
+ this.grades=[];
+ this.enrollementDate = new Date();
+}    
     // 2. Inscribir en curso:
+
+enrollInCourses(courseid){
+if (this.enrolledStudents.length>=this.maxCapacity){
+    throw new error
+}
+}
     
     // 3. Calcular promedio:
     

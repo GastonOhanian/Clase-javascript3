@@ -16,10 +16,13 @@ let shouldResetDisplay = false;
  * 4. Manejar el caso cuando shouldResetDisplay es true
  */
 function appendToResult(value) {
-    // TODO: Implementar esta función
-    // Pista: Usa document.getElementById('result')
-    // Pista: Verifica si shouldResetDisplay es true para limpiar primero
-    
+    const display= document.getElementById('result');
+if (shouldResetDisplay){
+    currentInput='';
+    shouldResetDisplay=false;
+}
+currentInput+=value;
+display.value=currentInput;
 }
 
 /**
@@ -32,11 +35,26 @@ function appendToResult(value) {
  * 4. Manejar errores (división por cero, sintaxis incorrecta)
  */
 function calculateResult() {
-    // TODO: Implementar esta función
-    // Pista: Usa try-catch para manejar errores
-    // Pista: Puedes usar eval() pero ten cuidado con la seguridad
-    // Pista: Después del cálculo, establece shouldResetDisplay = true
-    
+        const display= document.getElementById('result');
+        if(!isValidExpression(currentInput)){
+            display.value='Error';
+            shouldResetDisplay=true;
+        }
+try{
+const result=eval(currentInput);
+
+if(!isFinite(result)){
+    display.value='value'
+}else{
+    display.value=result;
+    currentInput=result.toString()
+}
+
+}catch(error){
+    display.value='error';
+
+}
+   shouldResetDisplay=true;
 }
 
 /**
@@ -47,10 +65,10 @@ function calculateResult() {
  * 2. Resetear las variables de control
  */
 function clearResult() {
-    // TODO: Implementar esta función
-    // Pista: Establece currentInput = ''
-    // Pista: Establece shouldResetDisplay = false
-    
+    const display= document.getElementById('result');
+    currentInput='';
+    display.value='';
+    shouldResetDisplay=false;
 }
 
 /**
@@ -62,9 +80,9 @@ function clearResult() {
  * 3. Actualizar el display
  */
 function deleteLast() {
-    // TODO: Implementar esta función
-    // Pista: Usa slice(0, -1) para eliminar el último carácter
-    
+    const display= document.getElementById('result');
+    currentInput=currentInput.slice(0, -1);
+    shouldResetDisplay=true;
 }
 
 // FUNCIONES DE AYUDA (ya implementadas)
